@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "migrate_down": "npx knex migrate:down --knexfile=./db/knexfile.js",
+    "migrate_latest": "npx knex migrate:latest --knexfile=./db/knexfile.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

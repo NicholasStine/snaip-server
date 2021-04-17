@@ -3,11 +3,14 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
-      database: 'snaip',
-      user: process.env.DEV_DB_USER,
-      password: process.env.DEV_DB_PASSWORD
+      // user: process.env.DEV_DB_USER,
+      // password: process.env.DEV_DB_PASSWORD,
+      user: 'snaiper',
+      password: '7t59hi3mio8',
+      host: 'localhost',
+      database: 'snaip'
     },
     pool: {
       min: 2,
