@@ -4,10 +4,13 @@
     "migrate_latest": "npx knex migrate:latest --knexfile=./db/knexfile.js"
   },
   "dependencies": {
+    "@google-cloud/storage": "^5.8.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "firebase": "^8.4.1",
     "knex": "^0.21.19",
+    "multer": "^1.4.2",
     "objection": "^2.2.15",
     "pg": "^8.5.1"
   }
