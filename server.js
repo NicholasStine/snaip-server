@@ -11,8 +11,8 @@ require('./db/psqlSetup')();
 app.use(cors());
 app.use(express.json());
 
-app.use('', userRoutes);
-app.use('/files', userRoutes);
+app.use('/user', userRoutes);
+app.use('/file', fileRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`EXPRESS\t:::\t${process.env.PORT}`)

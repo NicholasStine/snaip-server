@@ -57,25 +57,25 @@ router.post('/image', upload.single('image'), async (req, res, next) => {
 	}
 });
 
-// router.get('/image/:account_id/:certification_id', async (req, res) => {
-// 	try {
-// 		var imageList = [];
-// 		const checkID = await pool.query("SELECT * FROM certification_images WHERE account_id = $1 AND certification_id = $2",
-// 			[req.params.account_id, req.params.certification_id]);
-// 		if (checkID.rows.length == 0) {
-// 			res.status(401).json("Invalid Account / Certification ID");
-// 		}
+router.get('/image/:user_id', async (req, res) => {
+	try {
+		var imageList = [];
+		const checkID = await pool.query("SELECT * FROM images WHERE user_id = $1",
+			[req.params.user_id]);
+		if (checkID.rows.length == 0) {
+			return res.status(200).json([]);
+		}
 
-// 		for (const image of checkID.rows) {
-// 			imageList.push(image);
-// 		}
+		for (const image of checkID.rows) {
+			imageList.push({ img_name: image.img_name, img_url: image.img_url });
+		}
 
-// 		res.status(200).json(imageList);
-// 	} catch (err) {
-// 		console.log(err.message);
-// 		res.status(500).json(err.message);
-// 	}
-// });
+		res.status(200).json(imageList);
+	} catch (err) {
+		console.log(err.message);
+		res.status(500).json(err.message);
+	}
+});
 
 // router.delete('/image/:account_id/:certification_id/:image_name', async (req, res) => {
 // 	try {
