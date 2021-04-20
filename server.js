@@ -8,7 +8,9 @@ const fileRoutes = require('./routes/fileRoutes');
 require('dotenv').config()
 require('./db/psqlSetup')();
 
-app.use(cors());
+app.use(cors({
+    "Access-Control-Allow-Origin": "https://snaip-client.herokuapp.com"
+}));
 app.use(express.json());
 
 app.use('/user', userRoutes);
