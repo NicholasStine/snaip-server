@@ -9,7 +9,7 @@ require('dotenv').config()
 require('./db/psqlSetup')();
 
 app.use(cors({
-    "Access-Control-Allow-Origin": "https://snaip-client.herokuapp.com"
+    origin: "*"
 }));
 app.use(express.json());
 
