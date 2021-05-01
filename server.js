@@ -17,7 +17,7 @@ require('./db/psqlSetup')();
 //     next();
 // });
 
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 
 app.use('/user', (req, res, next) => {
