@@ -62,10 +62,19 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.put("/change", async (req, res) => {
+    await pool.query("UPDATE users SET handle = $1 WHERE email = $2",
+        [req.body.handle, req.body.email]);
+    
+    
+})
+
 router.get('/login', async (req, res) => {
     const { throw_err, email } = req.body;
 
+    // Simulate an error to demo a 500 response
     if (throw_err) {
+        // Return a 500 internal server error due to the "error"
         return res.status(500).json('OH NO, AN ERROR!!!');
     } else {
         // Get the handle from the database from a row with the email from the get request
@@ -75,7 +84,9 @@ router.get('/login', async (req, res) => {
         // If there's a handle in the database associated with that email:
         if (databaseResponse.rows.length > 0) {
             return res.status(200).json({ handle: databaseResponse.rows[0].handle })
+        // If there's no handle associated with that email:
         } else {
+            // Return a 401 unauthorized error
             return res.status(401).json("Whoops! No handle associated with that email");
         }
     }
